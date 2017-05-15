@@ -31,7 +31,7 @@ int t_string(char *string)
 }
 
 char *filtro(char *input,int tam){
-  int i,j,k,p=1,c=1,pf[20],l=0;
+  int i,j,k,p=1,c=1,pf[50],l=0;
   char **dicionario=NULL,**filtro=NULL,*menor=NULL;
 
   inicializar_dicionario();
@@ -40,43 +40,54 @@ char *filtro(char *input,int tam){
   filtro=criar_matriz(100,30);
 
   for(i=0; i< tamanho_dicionario(); i++){
-
     if(input[0]==dicionario[i][0] && input[tam-1] == dicionario[i][t_string(dicionario[i])-1]){
 
-      for(p=0,k=0; p<tam; p++){
-
-        if(input[p]==dicionario[i][k])
+      for(p=0,k=0; p<tam-1; p++){
+        if (k<t_string(dicionario[i])){
+          if(input[p]==dicionario[i][k]){
           k++;
+          }
+        }
         
         if (k==t_string(dicionario[i])-1){    
           pf[l]=i;
           l++;
-          //return dicionario[i];
-
         }
       }
     }
   }
 
-  printf("L\n");
+  for (i = 0; i < l; i++)
+  {
+    printf("%d\n",l ); 
+  }
+
+  printf("%d\n",l );
   if (l>1){
 
-    for (i = 0; i <= l; i++){
-      for (j = 0; j < t_string(dicionario[i])-1; j++)
+    menor = dicionario[pf[0]];
+
+    for (i = 0; i < l-1; i++){
+      for (j = 0; j < t_string(dicionario[pf[i]]); j++)
       {
-        if (dicionario[pf[i]][j]>dicionario[pf[i+1]][j])
-          menor=dicionario[pf[i+1]];
+        if (j<t_string(dicionario[pf[i+1]])){
+          printf("%d, %d\n",i,j );
+          if (dicionario[pf[i]][j]>dicionario[pf[i+1]][j]){
+             menor=dicionario[pf[i+1]];
+             break;
+          }
+        }
+
 
      }
    }
+
     return menor;
       
-  }else if (l=1){
+  }else if (l==1){
     return dicionario[pf[0]];
   }
-
-  
-  return(" ");
+  return("Zei\n");
 }
 
 char **criar_matriz(int l, int c)
