@@ -57,12 +57,6 @@ char *filtro(char *input,int tam){
     }
   }
 
-  for (i = 0; i < l; i++)
-  {
-    printf("%d\n",l ); 
-  }
-
-  printf("%d\n",l );
   if (l>1){
 
     menor = dicionario[pf[0]];
@@ -71,7 +65,6 @@ char *filtro(char *input,int tam){
       for (j = 0; j < t_string(dicionario[pf[i]]); j++)
       {
         if (j<t_string(dicionario[pf[i+1]])){
-          printf("%d, %d\n",i,j );
           if (dicionario[pf[i]][j]>dicionario[pf[i+1]][j]){
              menor=dicionario[pf[i+1]];
              break;
@@ -87,7 +80,7 @@ char *filtro(char *input,int tam){
   }else if (l==1){
     return dicionario[pf[0]];
   }
-  return("Zei\n");
+  return(" \n");
 }
 
 char **criar_matriz(int l, int c)
