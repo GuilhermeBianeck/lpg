@@ -9,7 +9,6 @@
 char  **criar_matriz(int c, int l);
 char *filtro(char **dicionario,char *input, int tam);
 int t_string(char *string);
-//void fres(char **dicionario);
 
 int main(void){
   char *output,input[1000],**dicionario=NULL;
@@ -21,7 +20,6 @@ int main(void){
   tam=t_string(input);
   output=filtro(dicionario,input,tam);
   printf("%s\n",output);
-  //fres(dicionario);
 
   return 0;
 }
@@ -36,7 +34,7 @@ int t_string(char *string)
 }
 
 char *filtro(char **dicionario, char *input,int tam){
-  int i,j,k,p=1,pf[50],l=0;
+  int i,j,k,p=1,c=1,pf[50],l=0;
   char *menor;
 
   for(i=0; i< tamanho_dicionario(); i++){
@@ -99,14 +97,3 @@ char **criar_matriz(int l, int c)
   }
   return ret;
 }
-
-/*void fres(char **dicionario)
-{
-	int i;
-	for(i=0;i<100;i++){
-		free(dicionario[i]);
-	}
-  free(dicionario);
-}
-
-*/
