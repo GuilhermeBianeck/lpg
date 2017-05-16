@@ -7,16 +7,21 @@
 //Quando nenhuma entrada for encontrada, substitua por um " "
 
 char  **criar_matriz(int c, int l);
-char *filtro(char *input, int tam);
+char *filtro(char **dicionario,char *input, int tam);
 int t_string(char *string);
+//void fres(char **dicionario);
 
 int main(void){
-  char *output,input[1000];
+  char *output,input[1000],**dicionario=NULL;
   int tam=0;
   scanf("%s",input);
+  inicializar_dicionario();
+  dicionario=criar_matriz(100,30);
+  dicionario=pegar_dicionario();
   tam=t_string(input);
-  output=filtro(input,tam);
+  output=filtro(dicionario,input,tam);
   printf("%s\n",output);
+  //fres(dicionario);
 
   return 0;
 }
@@ -30,14 +35,9 @@ int t_string(char *string)
     return t;
 }
 
-char *filtro(char *input,int tam){
-  int i,j,k,p=1,c=1,pf[50],l=0;
-  char **dicionario=NULL,**filtro=NULL,*menor=NULL;
-
-  inicializar_dicionario();
-  dicionario=criar_matriz(100,30);
-  dicionario=pegar_dicionario();
-  filtro=criar_matriz(100,30);
+char *filtro(char **dicionario, char *input,int tam){
+  int i,j,k,p=1,pf[50],l=0;
+  char *menor;
 
   for(i=0; i< tamanho_dicionario(); i++){
     if(input[0]==dicionario[i][0] && input[tam-1] == dicionario[i][t_string(dicionario[i])-1]){
@@ -57,30 +57,29 @@ char *filtro(char *input,int tam){
     }
   }
 
+  menor = dicionario[pf[0]];
+
   if (l>1){
 
-    menor = dicionario[pf[0]];
-
     for (i = 0; i < l-1; i++){
-      for (j = 0; j < t_string(dicionario[pf[i]]); j++)
-      {
-        if (j<t_string(dicionario[pf[i+1]])){
-          if (dicionario[pf[i]][j]>dicionario[pf[i+1]][j]){
+      	for (j = 0; j < t_string(dicionario[pf[i]]); j++)
+      	{
+       	 if (j<t_string(dicionario[pf[i+1]])){
+       	   if (dicionario[pf[i]][j]>dicionario[pf[i+1]][j]){
              menor=dicionario[pf[i+1]];
              break;
-          }
-        }
+        	}
+         }
 
 
-     }
-   }
-
+   	    }
+	}
     return menor;
-      
+     
   }else if (l==1){
-    return dicionario[pf[0]];
+      return menor;
   }
-  return(" \n");
+  return(" ");
 }
 
 char **criar_matriz(int l, int c)
@@ -100,3 +99,14 @@ char **criar_matriz(int l, int c)
   }
   return ret;
 }
+
+/*void fres(char **dicionario)
+{
+	int i;
+	for(i=0;i<100;i++){
+		free(dicionario[i]);
+	}
+  free(dicionario);
+}
+
+*/
