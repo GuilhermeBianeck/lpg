@@ -13,7 +13,7 @@ int main(void){
 	if(op == 1){
 		mat = criar_matriz(l, c, dados_bloco);
 	} else if(op == 2){
-		mat = criar_matriz(l, c, dados_distribuida);
+		mat = criar_matriz(l, c, dados_distribuidos);
 	} else {
 		printf("Opção inválida\n");
 		exit(EXIT_FAILURE);
@@ -25,7 +25,7 @@ int main(void){
 	if( op == 1){
 		liberar_matriz(mat, liberar_dados_bloco);
 	} else {
-		liberar_matriz(mat, liberar_dados_distribuida);
+		liberar_matriz(mat, liberar_dados_distribuidos);
 	}
 	return 0;
 

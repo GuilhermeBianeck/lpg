@@ -15,8 +15,8 @@ void liberar_matriz(TMatriz *mat, void (*f)(int **, int));
 
 /* funcoes para manipular dados */
 int **dados_bloco(int l, int c);
-int **dados_distribuida(int l, int c);
+int **dados_distribuidos(int l, int c);
 void liberar_dados_bloco(int **m, int l);
-void liberar_dados_distribuida(int **m, int l);	
+void liberar_dados_distribuidos(int **m, int l);	
 
 #endif
