@@ -1,18 +1,33 @@
 #include <stdio.h>
-#include "MATRIZ.H"
+#include <stdlib.h>
+#include "matriz.h"
 
-int main(void)
-{
-	int **mat=NULL;
-	int linhas=0,colunas=0;
+int main(void){
 
-	printf("Informe o número de linhas e coluas\n");
-	scanf("%d%d",&linhas,&colunas);
+	TMatriz *mat = NULL;
+	int op, l, c;
+	printf("Informe 1 para bloco e 2 para distribuida\n");
+	scanf("%d", &op);
+	printf("Informe o número de linhas e colunas\n");
+	scanf("%d%d", &l, &c);
+	if(op == 1){
+		mat = criar_matriz(l, c, dados_bloco);
+	} else if(op == 2){
+		mat = criar_matriz(l, c, dados_distribuida);
+	} else {
+		printf("Opção inválida\n");
+		exit(EXIT_FAILURE);
+	}
 
-	mat=criar_matriz(linhas,colunas);
-	iniciar_matriz(mat,linhas,colunas);
-	imprimir_matriz(mat,linhas,colunas);
-	liberar_matriz(mat,linhas,colunas);
+	iniciar_matriz(mat);
+	imprimir_matriz(mat);
 
+	if( op == 1){
+		liberar_matriz(mat, liberar_dados_bloco);
+	} else {
+		liberar_matriz(mat, liberar_dados_distribuida);
+	}
 	return 0;
+
+
 }
