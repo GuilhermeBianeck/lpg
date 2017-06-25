@@ -8,14 +8,12 @@ typedef struct{
 	char *comandos;
 	int bolinhas;
 	int saltos_sobre_cones:
-	int contadores[DIRECOES]
+	int contadores[DIRECOES];
 }Rodada;
 
 Rodada *rod;
 
-char *criar_matriz (int linhas,int colunas);
-void iniciar_matriz (Rodada *mat);
-void posicao_andando(char **vet, int rotacao,char inicial[], int subtraindo,int *linha,int *coluna,int *cones,int *N,int *S,int *L,int *O,int *NE,int *SE,int *SO,int *NO);
+void posmove(char **vet, int rotacao,char inicial[], int subtraindo,int *linha,int *coluna,int *cones,int *N,int *S,int *L,int *O,int *NE,int *SE,int *SO,int *NO);
 int analisar(char *palavra);
 int rotacao_equivalente(int rotacao);
 int analisador_de_movimentacao_pulo(char **vet, int rotacao, char inicial[], int subtraindo, int matriz_linhas, int matriz_colunas, int linha, int coluna);
