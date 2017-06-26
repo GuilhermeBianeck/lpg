@@ -23,6 +23,7 @@ int main (void){
 		scanf("%d %d %s ", &py, &px, &o);
 
 		for(i=0; i<rod->N; i++){
+			getchar();
 			for(j=0; j<rod->M; j++){
 				scanf("%c",&rod->arena[i][j]);
 				if (rod->arena[i][j]!= '.' && rod->arena[i][j]!= '*' && rod->arena[i][j]!= ' ' && rod->arena[i][j]!= '#' && rod->arena[i][j]!= '\n'){
