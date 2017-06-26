@@ -11,41 +11,41 @@ int main (void){
 
 	while (n !=0 && m !=0 && s !=0 ){
 
-		Rodada *rod = (Rod *) malloc (sizeof(Rodada));
+		Rodada *rod = (Rodada *) malloc (sizeof(Rodada));
 		scanf("%d %d %d",&rod->N,&rod->M,&rod->S);
 		rod->arena = (char **) malloc ( sizeof(char *) * rod->N);
 
 		for(i=0; i<rod->N; i++){
-			rod->arena[i]=(Char *) malloc(sizeof(char)* rod->M);
+			rod->arena[i]=(char *) malloc(sizeof(char)* rod->M);
 		}
 
-		rod->>comandos=(Char*)malloc(sizeof(char)* rod->S));
+		rod->comandos=(char*)malloc(sizeof(char)* rod->S);
 		scanf("%d %d %s ", &py, &px, &o);
 
 		for(i=0; i<rod->N; i++){
 			for(j=0; j<rod->M; j++){
 				scanf("%c",&rod->arena[i][j]);
-				if (rod->arena[i][j]!= "." || rod->arena[i][j]!= "*" || rod->arena[i][j]!= "" || rod->arena[i][j]!= "#"){
+				if (rod->arena[i][j]!= '.' && rod->arena[i][j]!= '*' && rod->arena[i][j]!= ' ' && rod->arena[i][j]!= '#' && rod->arena[i][j]!= '\n'){
 					printf ("Caracter Errado.");
 					return 0;
 				}
 			}
 		}
-	
+
 		scanf("%s",&rod->comandos);
-	
+
 		if(analisar(rod->comandos)==0){
 			printar(0,0,0,0,0,0,0,0,0,0,0);
 		}else if(analisar(rod->comandos)==1){
 			contador(rod->arena, py, px, o, rod->comandos, rod->N, rod->M);
 		}
-	
-   		free(rod->>comandos);
+
+   		free(rod->comandos);
    		for(i=0;i<rod->N;i++){
    			free(rod->arena[i]);
    		}
    		free(rod->arena);
-   		free(Rodada *rod);
+   		free(rod);
   		scanf("%d %d %d",&rod->N,&rod->M,&rod->S);
   	}
 

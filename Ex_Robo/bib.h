@@ -7,7 +7,7 @@ typedef struct{
 	char **arena;
 	char *comandos;
 	int bolinhas;
-	int saltos_sobre_cones:
+	int saltos_sobre_cones;
 	int contadores[DIRECOES];
 }Rodada;
 
