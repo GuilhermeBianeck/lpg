@@ -20,7 +20,7 @@ int main (void){
 		}
 
 		rod->comandos=(char*)malloc(sizeof(char)* rod->S);
-		scanf("%d %d %s ", &py, &px, &o);
+		scanf("%d %d %s ", &py, &px, o);
 
 		for(i=0; i<rod->N; i++){
 			getchar();
