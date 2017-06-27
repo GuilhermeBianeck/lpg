@@ -12,7 +12,7 @@ int main (void){
 	Rodada *rod = (Rodada *) malloc (sizeof(Rodada));
 	scanf("%d %d %d",&rod->N,&rod->M,&rod->S);	
 
-	while (n !=0 && m !=0 && s !=0 ){
+	while (rod->N !=0 && rod->M !=0 && rod->S !=0 ){
 		
 		rod->arena = (char **) malloc ( sizeof(char *) * rod->N);
 
