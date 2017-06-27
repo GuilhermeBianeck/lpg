@@ -12,7 +12,7 @@ int main (void){
 
 	Rodada *rod = (Rodada *) malloc (sizeof(Rodada));
 
-	scanf("%d %d %d",&rod->N,&rod->M,&rod->S);	
+	scanf("%d %d %d",&rod->N,&rod->M,&rod->S);
 
 	while (rod->N !=0 && rod->M !=0 && rod->S !=0 ){
 
@@ -22,7 +22,7 @@ int main (void){
 			rod->arena[i]=(char *) malloc(sizeof(char)* rod->M);
 		}
 		rod->comandos=(char*)malloc(sizeof(char)* rod->S);
-		
+
 		scanf("%d %d %s ", &py, &px, o);
 
 		for(i=0; i<rod->N; i++){
@@ -35,9 +35,7 @@ int main (void){
 				}
 			}
 		}
-
-		scanf("%s",&rod->comandos);
-
+		scanf("%s",rod->comandos);
 		if(analisar(rod->comandos)==0){
 			imprimir(0,0,0,0,0,0,0,0,0,0,0);
 		}else if(analisar(rod->comandos)==1){

@@ -10,8 +10,9 @@ int casos=0;
 int analisar(char *palavra){
     int i;
     for(i=0;i<strlen(palavra);i++){
-      if(palavra[i]=='F' || palavra[i]=='S')
-      	return 1;
+        if(palavra[i]=='F' || palavra[i]=='S'){
+            return 1;
+        }
     }
     return 0;
 }
@@ -199,7 +200,7 @@ void posmove(char **vet, int rotacao,char inicial[], int sub,int *linha,int *col
 	      else if(inicial[0]=='S' && inicial[1]=='O'){
 	        *coluna+=sub;
 	        *L+=1;
-	      }	
+	      }
 	      else if(inicial[0]=='N' && inicial[1]=='O'){
 	        *linha+=sub;
 	        *S+=1;
@@ -445,7 +446,7 @@ void contador(char **vet, int linha, int coluna, char inicial[],char comandos[],
 				coluna_pulo+=sub;linha_pulo-=sub;
 			}
 			else if(inicial[0]=='O'){
-				coluna_pulo-=sub;linha_pulo+=sub;	
+				coluna_pulo-=sub;linha_pulo+=sub;
 			}
 		}
 		if (rotacao==180){
@@ -564,7 +565,6 @@ void contador(char **vet, int linha, int coluna, char inicial[],char comandos[],
   imprimir(N,S,L,O,NE,SE,SO,NO,bolinha,pulos_sob_cones,0);
 	}
 }
-
 
 int rotacao_equivalente(int rotacao){
 	if(rotacao==360 || rotacao==0 || rotacao==720 || rotacao==1080){
