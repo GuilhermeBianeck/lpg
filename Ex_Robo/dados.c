@@ -16,280 +16,278 @@ int analisar(char *palavra){
     return 0;
 }
 
-void posmove(char **vet, int rotacao,char inicial[], int subtraindo,int *linha,int *coluna,int *cones,int *N,int *S,int *L,int *O,int *NE,int *SE,int *SO,int *NO){
-	switch (rotacao){
-	    case(0):
+void posmove(char **vet, int rotacao,char inicial[], int sub,int *linha,int *coluna,int *cones,int *N,int *S,int *L,int *O,int *NE,int *SE,int *SO,int *NO){
+	if (rotacao==0){
 	      if(inicial[0]=='N' && inicial[1]=='E'){
-	        *linha-=subtraindo;*coluna+=subtraindo;
+	        *linha-=sub;*coluna+=sub;
 	        *NE+1;
 	      }
 	      else if(inicial[0]=='S' && inicial[1]=='E'){
-	        *linha+=subtraindo;*coluna+=subtraindo;
+	        *linha+=sub;*coluna+=sub;
 	        *SE+=1;
 	      }
 	      else if(inicial[0]=='S' && inicial[1]=='O'){
-	        *linha+=subtraindo;*coluna-=subtraindo;
+	        *linha+=sub;*coluna-=sub;
 	        *SO+=1;
 	      }
 	      else if(inicial[0]=='N' && inicial[1]=='O'){
-	        *linha-=subtraindo;*coluna-=subtraindo;
+	        *linha-=sub;*coluna-=sub;
 	        *NO+=1;
 	      }
 	      else if(inicial[0]=='N'){
-	        *linha-=subtraindo;
+	        *linha-=sub;
 	        *N+=1;
 	      }
 	      else if(inicial[0]=='S'){
-	        *linha+=subtraindo;
+	        *linha+=sub;
 	        *S+=1;
 	      }
 	      else if(inicial[0]=='L'){
-	        *coluna+=subtraindo;
+	        *coluna+=sub;
 	        *L+=1;
 	      }
 	      else if(inicial[0]=='O'){
-	        *coluna-=subtraindo;
+	        *coluna-=sub;
 	        *O+=1;
 	      }
-	      break;
-	    case(45):
+		}
+	    if (rotacao==45){
 	      if(inicial[0]=='N' && inicial[1]=='E'){
-	        *coluna-=subtraindo;
+	        *coluna-=sub;
 	        *L+=1;
 	      }
 	      else if(inicial[0]=='S' && inicial[1]=='E'){
-	        *linha+=subtraindo;
+	        *linha+=sub;
 	        *S+=1;
 	      }
 	      else if(inicial[0]=='S' && inicial[1]=='O'){
-	        *coluna-=subtraindo;
+	        *coluna-=sub;
 	        *O+=1;
 	      }
 	      else if(inicial[0]=='N' && inicial[1]=='O'){
-	        *linha-=subtraindo;
+	        *linha-=sub;
 	        *N+=1;
 	      }
 	      else if(inicial[0]=='N'){
-	        *linha-=subtraindo;*coluna+=subtraindo;
+	        *linha-=sub;*coluna+=sub;
 	        *NE+=1;
 	      }
 	      else if(inicial[0]=='S'){
-	        *linha+=subtraindo;*coluna-=subtraindo;
+	        *linha+=sub;*coluna-=sub;
 	        *SO+=1;
 	      }
 	      else if(inicial[0]=='L'){
-	        *coluna+=subtraindo;*linha+=subtraindo;
+	        *coluna+=sub;*linha+=sub;
 	        *SE+=1;
 	      }
 	      else if(inicial[0]=='O'){
-	        *coluna-=subtraindo;*linha-=subtraindo;
+	        *coluna-=sub;*linha-=sub;
 	        *NO+=1;
 	      }
-	      break;
-	    case(90):
+		}
+	    if (rotacao==90){
 	      if(inicial[0]=='N' && inicial[1]=='E'){
-	        *linha+=subtraindo;*coluna+=subtraindo;
+	        *linha+=sub;*coluna+=sub;
 	        *SE+=1;
 	      }
 	      else if(inicial[0]=='S' && inicial[1]=='E'){
-	        *linha+=subtraindo;*coluna-=subtraindo;
+	        *linha+=sub;*coluna-=sub;
 	        *SO+=1;
 	      }
 	      else if(inicial[0]=='S' && inicial[1]=='O'){
-	        *linha-=subtraindo;*coluna-=subtraindo;
+	        *linha-=sub;*coluna-=sub;
 	        *NO+=1;
 	      }
 	      else if(inicial[0]=='N' && inicial[1]=='O'){
-	        *linha-=subtraindo;*coluna+=subtraindo;
+	        *linha-=sub;*coluna+=sub;
 	        *NE+=1;
 	      }
 	      else if(inicial[0]=='N'){
-	        *coluna+=subtraindo;
+	        *coluna+=sub;
 	        *L+=1;
 	      }
 	      else if(inicial[0]=='S'){
-	        *coluna-=subtraindo;
+	        *coluna-=sub;
 	        *O+=1;
 	      }
 	      else if(inicial[0]=='L'){
-	        *linha+=subtraindo;
+	        *linha+=sub;
 	        *S+=1;
 	      }
 	      else if(inicial[0]=='O'){
-	        *linha-=subtraindo;
+	        *linha-=sub;
 	        *N+=1;
 	      }
-	      break;
-	    case(135):
+		}
+	    if (rotacao==135){
 	      if(inicial[0]=='N' && inicial[1]=='E'){
-	        *linha+=subtraindo;
+	        *linha+=sub;
 	        *S+=1;
 	      }
 	      else if(inicial[0]=='S' && inicial[1]=='E'){
-	        *coluna-=subtraindo;
+	        *coluna-=sub;
 	        *O+=1;
 	      }
 	      else if(inicial[0]=='S' && inicial[1]=='O'){
-	        *linha-=subtraindo;
+	        *linha-=sub;
 	        *N+=1;
 	      }
 	      else if(inicial[0]=='N' && inicial[1]=='O'){
-	        *coluna-=subtraindo;
+	        *coluna-=sub;
 	        *L+=1;
 	      }
 	      else if(inicial[0]=='N'){
-	        *linha+=subtraindo;*coluna+=subtraindo;
+	        *linha+=sub;*coluna+=sub;
 	        *SE+=1;
 	      }
 	      else if(inicial[0]=='S'){
-	        *linha-=subtraindo;*coluna-=subtraindo;
+	        *linha-=sub;*coluna-=sub;
 	        *NO+=1;
 	      }
 	      else if(inicial[0]=='L'){
-	        *coluna+=subtraindo;*linha-=subtraindo;
+	        *coluna+=sub;*linha-=sub;
 	        *SO+=1;
 	      }
 	      else if(inicial[0]=='O'){
-	        *coluna-=subtraindo;*linha+=subtraindo;
+	        *coluna-=sub;*linha+=sub;
 	        *NE+=1;
 	      }
-	      break;
-	    case(180):
+	  	}
+	    if (rotacao==180){
 	      if(inicial[0]=='N' && inicial[1]=='E'){
-	        *linha+=subtraindo;*coluna-=subtraindo;
+	        *linha+=sub;*coluna-=sub;
 	        *SO+=1;
 	      }
 	      else if(inicial[0]=='S' && inicial[1]=='E'){
-	        *linha-=subtraindo;*coluna-=subtraindo;
+	        *linha-=sub;*coluna-=sub;
 	        *NO+=1;
 	      }
 	      else if(inicial[0]=='S' && inicial[1]=='O'){
-	        *linha-=subtraindo;*coluna+=subtraindo;
+	        *linha-=sub;*coluna+=sub;
 	        *NE+=1;
 	      }
 	      else if(inicial[0]=='N' && inicial[1]=='O'){
-	        *linha+=subtraindo;*coluna+=subtraindo;
+	        *linha+=sub;*coluna+=sub;
 	        *SE+=1;
 	      }
 	      else if(inicial[0]=='N'){
-	        *linha+=subtraindo;
+	        *linha+=sub;
 	        *S+=1;
 	      }
 	      else if(inicial[0]=='S'){
-	        *linha-=subtraindo;
+	        *linha-=sub;
 	        *N+=1;
 	      }
 	      else if(inicial[0]=='L'){
-	        *coluna-=subtraindo;
+	        *coluna-=sub;
 	        *O+=1;
 	      }
 	      else if(inicial[0]=='O'){
-	        *coluna+=subtraindo;
+	        *coluna+=sub;
 	        *L+=1;
 	      }
-	      break;
-	    case(225):
+	  	}
+	    if (rotacao==225){
 	      if(inicial[0]=='N' && inicial[1]=='E'){
-	        *coluna-=subtraindo;
+	        *coluna-=sub;
 	        *O+=1;
 	      }
 	      else if(inicial[0]=='S' && inicial[1]=='E'){
-	        *linha-=subtraindo;
+	        *linha-=sub;
 	        *N+=1;
 	      }
 	      else if(inicial[0]=='S' && inicial[1]=='O'){
-	        *coluna+=subtraindo;
+	        *coluna+=sub;
 	        *L+=1;
-	      }
+	      }	
 	      else if(inicial[0]=='N' && inicial[1]=='O'){
-	        *linha+=subtraindo;
+	        *linha+=sub;
 	        *S+=1;
 	      }
 	      else if(inicial[0]=='N'){
-	        *linha-=subtraindo;*coluna+=subtraindo;
+	        *linha-=sub;*coluna+=sub;
 	        *SO+=1;
 	      }
 	      else if(inicial[0]=='S'){
-	        *linha-=subtraindo;*coluna+=subtraindo;
+	        *linha-=sub;*coluna+=sub;
 	        *NE+=1;
 	      }
 	      else if(inicial[0]=='L'){
-	        *coluna-=subtraindo;*linha-=subtraindo;
+	        *coluna-=sub;*linha-=sub;
 	        *NO+=1;
 	      }
 	      else if(inicial[0]=='O'){
-	        *coluna+=subtraindo;*linha+=subtraindo;
+	        *coluna+=sub;*linha+=sub;
 	        *SE+=1;
 	      }
-	      break;
-	    case(270):
+	  	}
+	    if (rotacao==270){
 	      if(inicial[0]=='N' && inicial[1]=='E'){
-	        *linha-=subtraindo;*coluna-=subtraindo;
+	        *linha-=sub;*coluna-=sub;
 	        *NO+=1;
 	      }
 	      else if(inicial[0]=='S' && inicial[1]=='E'){
-	        *linha-=subtraindo;*coluna+=subtraindo;
+	        *linha-=sub;*coluna+=sub;
 	        *NE+=1;
 	      }
 	      else if(inicial[0]=='S' && inicial[1]=='O'){
-	        *linha+=subtraindo;*coluna+=subtraindo;
+	        *linha+=sub;*coluna+=sub;
 	        *SE+=1;
 	      }
 	      else if(inicial[0]=='N' && inicial[1]=='O'){
-	        *linha+=subtraindo;*coluna-=subtraindo;
+	        *linha+=sub;*coluna-=sub;
 	        *SO+=1;
 	      }
 	      else if(inicial[0]=='N'){
-	        *coluna-=subtraindo;
+	        *coluna-=sub;
 	        *O+=1;
 	      }
 	      else if(inicial[0]=='S'){
-	        *coluna+=subtraindo;
+	        *coluna+=sub;
 	        *L+=1;
 	      }
 	      else if(inicial[0]=='L'){
-	        *linha-=subtraindo;
+	        *linha-=sub;
 	        *N+=1;
 	      }
 	      else if(inicial[0]=='O'){
-	        *linha+=subtraindo;
+	        *linha+=sub;
 	        *S+=1;
 	      }
-	      break;
-	    case(315):
+		}
+	    if (rotacao==315){
 	      if(inicial[0]=='N' && inicial[1]=='E'){
-	        *linha-=subtraindo;
+	        *linha-=sub;
 	        *N+=1;
 	      }
 	      else if(inicial[0]=='S' && inicial[1]=='E'){
-	        *coluna+=subtraindo;
+	        *coluna+=sub;
 	        *L+=1;
 	      }
 	      else if(inicial[0]=='S' && inicial[1]=='O'){
-	        *linha+=subtraindo;
+	        *linha+=sub;
 	        *S+=1;
 	      }
 	      else if(inicial[0]=='N' && inicial[1]=='O'){
-	        *coluna-=subtraindo;
+	        *coluna-=sub;
 	        *O+=1;
 	      }
 	      else if(inicial[0]=='N'){
-	        *linha-=subtraindo;*coluna-=subtraindo;
+	        *linha-=sub;*coluna-=sub;
 	        *NO+=1;
 	      }
 	      else if(inicial[0]=='S'){
-	        *linha+=subtraindo;*coluna+=subtraindo;
+	        *linha+=sub;*coluna+=sub;
 	        *SE+=1;
 	      }
 	      else if(inicial[0]=='L'){
-	        *coluna+=subtraindo;*linha-=subtraindo;
+	        *coluna+=sub;*linha-=sub;
 	        *NE+=1;
 	      }
 	      else if(inicial[0]=='O'){
-	        *coluna-=subtraindo;*linha+=subtraindo;
+	        *coluna-=sub;*linha+=sub;
 	        *SO+=1;
 	      }
-	      break;
 	  }
 	if(vet[*linha][*coluna]=='#'){
 	  *cones+=1;
@@ -297,7 +295,7 @@ void posmove(char **vet, int rotacao,char inicial[], int subtraindo,int *linha,i
 }
 
 void contador(char **vet, int linha, int coluna, char inicial[],char comandos[], int matriz_linhas, int matriz_colunas){
-  int i=0, bolinha=0, subtraindo=0, pulos_sob_cones=0, aux_printar=0;
+  int i=0, bolinha=0, sub=0, pulos_sob_cones=0, aux_imprimir=0;
 	int N=0,S=0,L=0,O=0,NE=0,SE=0,SO=0,NO=0;
 
   while(comandos[i]!='\0'){
@@ -310,8 +308,8 @@ void contador(char **vet, int linha, int coluna, char inicial[],char comandos[],
 				break;
 			}
 			if(comandos[i]=='\0'){
-				printar(N,S,L,O,NE,SE,SO,NO,bolinha,pulos_sob_cones,0);
-				aux_printar+=1;
+				imprimir(N,S,L,O,NE,SE,SO,NO,bolinha,pulos_sob_cones,0);
+				aux_imprimir+=1;
 				break;
 			}
       if(comandos[i]=='D'){
@@ -326,10 +324,10 @@ void contador(char **vet, int linha, int coluna, char inicial[],char comandos[],
 			break;
 		}
     if(comandos[i]=='F'){
-      subtraindo = 1;
+      sub = 1;
     }
     if(comandos[i]=='S'){
-      subtraindo = 2;
+      sub = 2;
     }
 
     rotacao = rotacao_equivalente(rotacao);
@@ -346,228 +344,227 @@ void contador(char **vet, int linha, int coluna, char inicial[],char comandos[],
 		if(comandos[i]=='S'){
     if(analisador_de_movimentacao_pulo(vet, rotacao, inicial, 2, matriz_linhas, matriz_colunas, linha_pulo , coluna_pulo)==1){
 					pulos_sob_cones+=cones;
-					switch (rotacao){
-						case(0):
-							if(inicial[0]=='N' && inicial[1]=='E'){
-								linha_pulo-=subtraindo;coluna_pulo+=subtraindo;
-							}
-							else if(inicial[0]=='S' && inicial[1]=='E'){
-								linha_pulo+=subtraindo;coluna_pulo+=subtraindo;
-							}
-							else if(inicial[0]=='S' && inicial[1]=='O'){
-								linha_pulo+=subtraindo;coluna_pulo-=subtraindo;
-							}
-							else if(inicial[0]=='N' && inicial[1]=='O'){
-								linha_pulo-=subtraindo;coluna_pulo-=subtraindo;
-							}
-							else if(inicial[0]=='N'){
-								linha_pulo-=subtraindo;
-							}
-							else if(inicial[0]=='S'){
-								linha_pulo+=subtraindo;
-							}
-							else if(inicial[0]=='L'){
-								coluna_pulo+=subtraindo;
-							}
-							else if(inicial[0]=='O'){
-								coluna_pulo-=subtraindo;
-							}
-							break;
-						case(45):
-							if(inicial[0]=='N' && inicial[1]=='E'){
-								coluna_pulo-=subtraindo;
-							}
-							else if(inicial[0]=='S' && inicial[1]=='E'){
-								linha_pulo+=subtraindo;
-							}
-							else if(inicial[0]=='S' && inicial[1]=='O'){
-								coluna_pulo-=subtraindo;
-							}
-							else if(inicial[0]=='N' && inicial[1]=='O'){
-								linha_pulo-=subtraindo;
-							}
-							else if(inicial[0]=='N'){
-								linha_pulo-=subtraindo;coluna_pulo+=subtraindo;
-							}
-							else if(inicial[0]=='S'){
-								linha_pulo+=subtraindo;coluna_pulo-=subtraindo;
-							}
-							else if(inicial[0]=='L'){
-								coluna_pulo+=subtraindo;linha_pulo+=subtraindo;
-							}
-							else if(inicial[0]=='O'){
-								coluna_pulo-=subtraindo;linha_pulo-=subtraindo;
-							}
-							break;
-						case(90):
-							if(inicial[0]=='N' && inicial[1]=='E'){
-								linha_pulo+=subtraindo;coluna_pulo+=subtraindo;
-							}
-							else if(inicial[0]=='S' && inicial[1]=='E'){
-								linha_pulo+=subtraindo;coluna_pulo-=subtraindo;
-							}
-							else if(inicial[0]=='S' && inicial[1]=='O'){
-								linha_pulo-=subtraindo;coluna_pulo-=subtraindo;
-							}
-							else if(inicial[0]=='N' && inicial[1]=='O'){
-								linha_pulo-=subtraindo;coluna_pulo+=subtraindo;
-							}
-							else if(inicial[0]=='N'){
-								coluna_pulo+=subtraindo;
-							}
-							else if(inicial[0]=='S'){
-								coluna_pulo-=subtraindo;
-							}
-							else if(inicial[0]=='L'){
-								linha_pulo+=subtraindo;
-							}
-							else if(inicial[0]=='O'){
-								linha_pulo-=subtraindo;
-							}
-							break;
-						case(135):
-							if(inicial[0]=='N' && inicial[1]=='E'){
-								linha_pulo+=subtraindo;
-							}
-							else if(inicial[0]=='S' && inicial[1]=='E'){
-								coluna_pulo-=subtraindo;
-							}
-							else if(inicial[0]=='S' && inicial[1]=='O'){
-								linha_pulo-=subtraindo;
-							}
-							else if(inicial[0]=='N' && inicial[1]=='O'){
-								coluna_pulo-=subtraindo;
-							}
-							else if(inicial[0]=='N'){
-								linha_pulo+=subtraindo;coluna_pulo+=subtraindo;
-							}
-							else if(inicial[0]=='S'){
-								linha_pulo-=subtraindo;coluna_pulo-=subtraindo;
-							}
-							else if(inicial[0]=='L'){
-								coluna_pulo+=subtraindo;linha_pulo-=subtraindo;
-							}
-							else if(inicial[0]=='O'){
-								coluna_pulo-=subtraindo;linha_pulo+=subtraindo;
-							}
-							break;
-						case(180):
-							if(inicial[0]=='N' && inicial[1]=='E'){
-								linha_pulo+=subtraindo;coluna_pulo-=subtraindo;
-							}
-							else if(inicial[0]=='S' && inicial[1]=='E'){
-								linha_pulo-=subtraindo;coluna_pulo-=subtraindo;
-							}
-							else if(inicial[0]=='S' && inicial[1]=='O'){
-								linha_pulo-=subtraindo;coluna_pulo+=subtraindo;
-							}
-							else if(inicial[0]=='N' && inicial[1]=='O'){
-								linha_pulo+=subtraindo;coluna_pulo+=subtraindo;
-							}
-							else if(inicial[0]=='N'){
-								linha_pulo+=subtraindo;
-							}
-							else if(inicial[0]=='S'){
-								linha_pulo-=subtraindo;
-							}
-							else if(inicial[0]=='L'){
-								coluna_pulo-=subtraindo;
-							}
-							else if(inicial[0]=='O'){
-								coluna_pulo+=subtraindo;
-							}
-							break;
-						case(225):
-							if(inicial[0]=='N' && inicial[1]=='E'){
-								coluna_pulo-=subtraindo;
-							}
-							else if(inicial[0]=='S' && inicial[1]=='E'){
-								linha_pulo-=subtraindo;
-							}
-							else if(inicial[0]=='S' && inicial[1]=='O'){
-								coluna_pulo+=subtraindo;
-							}
-							else if(inicial[0]=='N' && inicial[1]=='O'){
-								linha_pulo+=subtraindo;
-							}
-							else if(inicial[0]=='N'){
-								linha_pulo-=subtraindo;coluna_pulo+=subtraindo;
-							}
-							else if(inicial[0]=='S'){
-								linha_pulo-=subtraindo;coluna_pulo+=subtraindo;
-							}
-							else if(inicial[0]=='L'){
-								coluna_pulo-=subtraindo;linha_pulo-=subtraindo;
-							}
-							else if(inicial[0]=='O'){
-								coluna_pulo+=subtraindo;linha_pulo+=subtraindo;
-							}
-							break;
-						case(270):
-							if(inicial[0]=='N' && inicial[1]=='E'){
-								linha_pulo-=subtraindo;coluna_pulo-=subtraindo;
-							}
-							else if(inicial[0]=='S' && inicial[1]=='E'){
-								linha_pulo-=subtraindo;coluna_pulo+=subtraindo;
-							}
-							else if(inicial[0]=='S' && inicial[1]=='O'){
-								linha_pulo+=subtraindo;coluna_pulo+=subtraindo;
-							}
-							else if(inicial[0]=='N' && inicial[1]=='O'){
-								linha_pulo+=subtraindo;coluna_pulo-=subtraindo;
-							}
-							else if(inicial[0]=='N'){
-								coluna_pulo-=subtraindo;
-							}
-							else if(inicial[0]=='S'){
-								coluna_pulo+=subtraindo;
-							}
-							else if(inicial[0]=='L'){
-								linha_pulo-=subtraindo;
-							}
-							else if(inicial[0]=='O'){
-								linha_pulo+=subtraindo;
-							}
-							break;
-						case(315):
-							if(inicial[0]=='N' && inicial[1]=='E'){
-								linha_pulo-=subtraindo;
-							}
-							else if(inicial[0]=='S' && inicial[1]=='E'){
-								coluna_pulo+=subtraindo;
-							}
-							else if(inicial[0]=='S' && inicial[1]=='O'){
-								linha_pulo+=subtraindo;
-							}
-							else if(inicial[0]=='N' && inicial[1]=='O'){
-								coluna_pulo-=subtraindo;
-							}
-							else if(inicial[0]=='N'){
-								linha_pulo-=subtraindo;coluna_pulo-=subtraindo;
-							}
-							else if(inicial[0]=='S'){
-								linha_pulo+=subtraindo;coluna_pulo+=subtraindo;
-							}
-							else if(inicial[0]=='L'){
-								coluna_pulo+=subtraindo;linha_pulo-=subtraindo;
-							}
-							else if(inicial[0]=='O'){
-								coluna_pulo-=subtraindo;linha_pulo+=subtraindo;
-							}
-							break;
-					}
-							if(vet[linha_pulo][coluna_pulo]=='*'){
-				          	bolinha++;
-				    	}
-						}
+		if (rotacao==0){
+			if(inicial[0]=='N' && inicial[1]=='E'){
+				linha_pulo-=sub;coluna_pulo+=sub;
 				}
+				else if(inicial[0]=='S' && inicial[1]=='E'){
+					linha_pulo+=sub;coluna_pulo+=sub;
+					}
+				else if(inicial[0]=='S' && inicial[1]=='O'){
+					linha_pulo+=sub;coluna_pulo-=sub;
+					}
+				else if(inicial[0]=='N' && inicial[1]=='O'){
+					linha_pulo-=sub;coluna_pulo-=sub;
+				}
+				else if(inicial[0]=='N'){
+					linha_pulo-=sub;
+				}
+				else if(inicial[0]=='S'){
+					linha_pulo+=sub;
+				}
+				else if(inicial[0]=='L'){
+					coluna_pulo+=sub;
+				}
+				else if(inicial[0]=='O'){
+					coluna_pulo-=sub;
+				}
+		}
+		if (rotacao==45){
+			if(inicial[0]=='N' && inicial[1]=='E'){
+				coluna_pulo-=sub;
+			}
+			else if(inicial[0]=='S' && inicial[1]=='E'){
+				linha_pulo+=sub;
+			}
+			else if(inicial[0]=='S' && inicial[1]=='O'){
+				coluna_pulo-=sub;
+			}
+			else if(inicial[0]=='N' && inicial[1]=='O'){
+				linha_pulo-=sub;
+			}
+			else if(inicial[0]=='N'){
+				linha_pulo-=sub;coluna_pulo+=sub;
+			}
+			else if(inicial[0]=='S'){
+				linha_pulo+=sub;coluna_pulo-=sub;
+			}
+			else if(inicial[0]=='L'){
+				coluna_pulo+=sub;linha_pulo+=sub;
+			}
+			else if(inicial[0]=='O'){
+				coluna_pulo-=sub;linha_pulo-=sub;
+			}
+		}
+		if (rotacao==90){
+			if(inicial[0]=='N' && inicial[1]=='E'){
+				linha_pulo+=sub;coluna_pulo+=sub;
+			}
+			else if(inicial[0]=='S' && inicial[1]=='E'){
+				linha_pulo+=sub;coluna_pulo-=sub;
+			}
+			else if(inicial[0]=='S' && inicial[1]=='O'){
+				linha_pulo-=sub;coluna_pulo-=sub;
+			}
+			else if(inicial[0]=='N' && inicial[1]=='O'){
+				linha_pulo-=sub;coluna_pulo+=sub;
+			}
+			else if(inicial[0]=='N'){
+				coluna_pulo+=sub;
+			}
+			else if(inicial[0]=='S'){
+				coluna_pulo-=sub;
+			}
+			else if(inicial[0]=='L'){
+				linha_pulo+=sub;
+			}
+			else if(inicial[0]=='O'){
+				linha_pulo-=sub;
+			}
+		}
+		if (rotacao==135){
+			if(inicial[0]=='N' && inicial[1]=='E'){
+				linha_pulo+=sub;
+			}
+			else if(inicial[0]=='S' && inicial[1]=='E'){
+				coluna_pulo-=sub;
+			}
+			else if(inicial[0]=='S' && inicial[1]=='O'){
+				linha_pulo-=sub;
+			}
+			else if(inicial[0]=='N' && inicial[1]=='O'){
+				coluna_pulo-=sub;
+			}
+			else if(inicial[0]=='N'){
+				linha_pulo+=sub;coluna_pulo+=sub;
+			}
+			else if(inicial[0]=='S'){
+				linha_pulo-=sub;coluna_pulo-=sub;
+			}
+			else if(inicial[0]=='L'){
+				coluna_pulo+=sub;linha_pulo-=sub;
+			}
+			else if(inicial[0]=='O'){
+				coluna_pulo-=sub;linha_pulo+=sub;	
+			}
+		}
+		if (rotacao==180){
+			if(inicial[0]=='N' && inicial[1]=='E'){
+				linha_pulo+=sub;coluna_pulo-=sub;
+			}
+			else if(inicial[0]=='S' && inicial[1]=='E'){
+				linha_pulo-=sub;coluna_pulo-=sub;
+			}
+			else if(inicial[0]=='S' && inicial[1]=='O'){
+				linha_pulo-=sub;coluna_pulo+=sub;
+			}
+			else if(inicial[0]=='N' && inicial[1]=='O'){
+				linha_pulo+=sub;coluna_pulo+=sub;
+			}
+			else if(inicial[0]=='N'){
+				linha_pulo+=sub;
+			}
+			else if(inicial[0]=='S'){
+				linha_pulo-=sub;
+			}
+			else if(inicial[0]=='L'){
+				coluna_pulo-=sub;
+			}
+			else if(inicial[0]=='O'){
+				coluna_pulo+=sub;
+			}
+		}
+		if (rotacao==225){
+			if(inicial[0]=='N' && inicial[1]=='E'){
+				coluna_pulo-=sub;
+			}
+			else if(inicial[0]=='S' && inicial[1]=='E'){
+				linha_pulo-=sub;
+			}
+			else if(inicial[0]=='S' && inicial[1]=='O'){
+				coluna_pulo+=sub;
+			}
+			else if(inicial[0]=='N' && inicial[1]=='O'){
+				linha_pulo+=sub;
+			}
+			else if(inicial[0]=='N'){
+				linha_pulo-=sub;coluna_pulo+=sub;
+			}
+			else if(inicial[0]=='S'){
+				linha_pulo-=sub;coluna_pulo+=sub;
+			}
+			else if(inicial[0]=='L'){
+				coluna_pulo-=sub;linha_pulo-=sub;
+			}
+			else if(inicial[0]=='O'){
+				coluna_pulo+=sub;linha_pulo+=sub;
+			}
+		}
+		if (rotacao==270){
+			if(inicial[0]=='N' && inicial[1]=='E'){
+				linha_pulo-=sub;coluna_pulo-=sub;
+			}
+			else if(inicial[0]=='S' && inicial[1]=='E'){
+				linha_pulo-=sub;coluna_pulo+=sub;
+			}
+			else if(inicial[0]=='S' && inicial[1]=='O'){
+				linha_pulo+=sub;coluna_pulo+=sub;
+			}
+			else if(inicial[0]=='N' && inicial[1]=='O'){
+				linha_pulo+=sub;coluna_pulo-=sub;
+			}
+			else if(inicial[0]=='N'){
+				coluna_pulo-=sub;
+			}
+			else if(inicial[0]=='S'){
+				coluna_pulo+=sub;
+			}
+			else if(inicial[0]=='L'){
+				linha_pulo-=sub;
+			}
+			else if(inicial[0]=='O'){
+				linha_pulo+=sub;
+			}
+		}
+		if (rotacao==315){
+			if(inicial[0]=='N' && inicial[1]=='E'){
+				linha_pulo-=sub;
+			}
+			else if(inicial[0]=='S' && inicial[1]=='E'){
+				coluna_pulo+=sub;
+			}
+			else if(inicial[0]=='S' && inicial[1]=='O'){
+				linha_pulo+=sub;
+			}
+			else if(inicial[0]=='N' && inicial[1]=='O'){
+				coluna_pulo-=sub;
+			}
+			else if(inicial[0]=='N'){
+				linha_pulo-=sub;coluna_pulo-=sub;
+			}
+			else if(inicial[0]=='S'){
+				linha_pulo+=sub;coluna_pulo+=sub;
+			}
+			else if(inicial[0]=='L'){
+				coluna_pulo+=sub;linha_pulo-=sub;
+			}
+			else if(inicial[0]=='O'){
+				coluna_pulo-=sub;linha_pulo+=sub;
+			}
+		}
+		if(vet[linha_pulo][coluna_pulo]=='*'){
+			bolinha++;
+		}
+	}
+	}
 
     i++;
   }
-  	if(aux_printar==0){
-  printar(N,S,L,O,NE,SE,SO,NO,bolinha,pulos_sob_cones,0);
+  	if(aux_imprimir==0){
+  imprimir(N,S,L,O,NE,SE,SO,NO,bolinha,pulos_sob_cones,0);
 	}
 }
+
 
 int rotacao_equivalente(int rotacao){
 	if(rotacao==360 || rotacao==0 || rotacao==720 || rotacao==1080){
@@ -596,217 +593,215 @@ int rotacao_equivalente(int rotacao){
 	}
 }
 
-int analisador_de_movimentacao_pulo(char **vet, int rotacao, char inicial[], int subtraindo, int matriz_linhas, int matriz_colunas, int linha, int coluna){
-	switch (rotacao){
-	    case(0):
+int analisador_de_movimentacao_pulo(char **vet, int rotacao, char inicial[], int sub, int matriz_linhas, int matriz_colunas, int linha, int coluna){
+	if (rotacao==0){
 	      if(inicial[0]=='N' && inicial[1]=='E'){
-	        linha-=subtraindo;coluna+=subtraindo;
+	        linha-=sub;coluna+=sub;
 	      }
 	      else if(inicial[0]=='S' && inicial[1]=='E'){
-	        linha+=subtraindo;coluna+=subtraindo;
+	        linha+=sub;coluna+=sub;
 	      }
 	      else if(inicial[0]=='S' && inicial[1]=='O'){
-	        linha+=subtraindo;coluna-=subtraindo;
+	        linha+=sub;coluna-=sub;
 	      }
 	      else if(inicial[0]=='N' && inicial[1]=='O'){
-	        linha-=subtraindo;coluna-=subtraindo;
+	        linha-=sub;coluna-=sub;
 	      }
 				else if(inicial[0]=='N'){
-	        linha-=subtraindo;
+	        linha-=sub;
 	      }
 	      else if(inicial[0]=='S'){
-	        linha+=subtraindo;
+	        linha+=sub;
 	      }
 	      else if(inicial[0]=='L'){
-	        coluna+=subtraindo;
+	        coluna+=sub;
 	      }
 	      else if(inicial[0]=='O'){
-	        coluna-=subtraindo;
+	        coluna-=sub;
 	      }
-	      break;
-	    case(45):
+	  	}
+	    if(rotacao==45){
 	      if(inicial[0]=='N' && inicial[1]=='E'){
-	        coluna-=subtraindo;
+	        coluna-=sub;
 	      }
 	      else if(inicial[0]=='S' && inicial[1]=='E'){
-	        linha+=subtraindo;
+	        linha+=sub;
 	      }
 	      else if(inicial[0]=='S' && inicial[1]=='O'){
-	        coluna-=subtraindo;
+	        coluna-=sub;
 	      }
 	      else if(inicial[0]=='N' && inicial[1]=='O'){
-	        linha-=subtraindo;
+	        linha-=sub;
 	      }
 				else if(inicial[0]=='N'){
-	        linha-=subtraindo;coluna+=subtraindo;
+	        linha-=sub;coluna+=sub;
 	      }
 	      else if(inicial[0]=='S'){
-	        linha+=subtraindo;coluna-=subtraindo;
+	        linha+=sub;coluna-=sub;
 	      }
 	      else if(inicial[0]=='L'){
-	        coluna+=subtraindo;linha+=subtraindo;
+	        coluna+=sub;linha+=sub;
 	      }
 	      else if(inicial[0]=='O'){
-	        coluna-=subtraindo;linha-=subtraindo;
+	        coluna-=sub;linha-=sub;
 	      }
-	      break;
-	    case(90):
+		}
+	    if(rotacao==90){
 	      if(inicial[0]=='N' && inicial[1]=='E'){
-	        linha+=subtraindo;coluna+=subtraindo;
+	        linha+=sub;coluna+=sub;
 	      }
 	      else if(inicial[0]=='S' && inicial[1]=='E'){
-	        linha+=subtraindo;coluna-=subtraindo;
+	        linha+=sub;coluna-=sub;
 	      }
 	      else if(inicial[0]=='S' && inicial[1]=='O'){
-	        linha-=subtraindo;coluna-=subtraindo;
+	        linha-=sub;coluna-=sub;
 	      }
 	      else if(inicial[0]=='N' && inicial[1]=='O'){
-	        linha-=subtraindo;coluna+=subtraindo;
+	        linha-=sub;coluna+=sub;
 	      }
 				else if(inicial[0]=='N'){
-	        coluna+=subtraindo;
+	        coluna+=sub;
 	      }
 	      else if(inicial[0]=='S'){
-	        coluna-=subtraindo;
+	        coluna-=sub;
 	      }
 	      else if(inicial[0]=='L'){
-	        linha+=subtraindo;
+	        linha+=sub;
 	      }
 	      else if(inicial[0]=='O'){
-	        linha-=subtraindo;
+	        linha-=sub;
 	      }
-	      break;
-	    case(135):
+		}
+		if(rotacao==135){
 	      if(inicial[0]=='N' && inicial[1]=='E'){
-	        linha+=subtraindo;
+	        linha+=sub;
 	      }
 	      else if(inicial[0]=='S' && inicial[1]=='E'){
-	        coluna-=subtraindo;
+	        coluna-=sub;
 	      }
 	      else if(inicial[0]=='S' && inicial[1]=='O'){
-	        linha-=subtraindo;
+	        linha-=sub;
 	      }
 	      else if(inicial[0]=='N' && inicial[1]=='O'){
-	        coluna-=subtraindo;
+	        coluna-=sub;
 	      }
 				else if(inicial[0]=='N'){
-					linha+=subtraindo;coluna+=subtraindo;
+					linha+=sub;coluna+=sub;
 				}
 				else if(inicial[0]=='S'){
-					linha-=subtraindo;coluna-=subtraindo;
+					linha-=sub;coluna-=sub;
 				}
 				else if(inicial[0]=='L'){
-					coluna+=subtraindo;linha-=subtraindo;
+					coluna+=sub;linha-=sub;
 				}
 				else if(inicial[0]=='O'){
-					coluna-=subtraindo;linha+=subtraindo;
+					coluna-=sub;linha+=sub;
 				}
-	      break;
-	    case(180):
+		}
+	    if(rotacao==180){
 	      if(inicial[0]=='N' && inicial[1]=='E'){
-	        linha+=subtraindo;coluna-=subtraindo;
+	        linha+=sub;coluna-=sub;
 	      }
 	      else if(inicial[0]=='S' && inicial[1]=='E'){
-	        linha-=subtraindo;coluna-=subtraindo;
+	        linha-=sub;coluna-=sub;
 	      }
 	      else if(inicial[0]=='S' && inicial[1]=='O'){
-	        linha-=subtraindo;coluna+=subtraindo;
+	        linha-=sub;coluna+=sub;
 	      }
 	      else if(inicial[0]=='N' && inicial[1]=='O'){
-	        linha+=subtraindo;coluna+=subtraindo;
+	        linha+=sub;coluna+=sub;
 	      }
 				else if(inicial[0]=='N'){
-	        linha+=subtraindo;
+	        linha+=sub;
 	      }
 	      else if(inicial[0]=='S'){
-	        linha-=subtraindo;
+	        linha-=sub;
 	      }
 	      else if(inicial[0]=='L'){
-	        coluna-=subtraindo;
+	        coluna-=sub;
 	      }
 	      else if(inicial[0]=='O'){
-	        coluna+=subtraindo;
+	        coluna+=sub;
 	      }
-	      break;
-	    case(225):
+	    }
+	    if(rotacao==225){
 	      if(inicial[0]=='N' && inicial[1]=='E'){
-	        coluna-=subtraindo;
+	        coluna-=sub;
 	      }
 	      else if(inicial[0]=='S' && inicial[1]=='E'){
-	        linha-=subtraindo;
+	        linha-=sub;
 	      }
 	      else if(inicial[0]=='S' && inicial[1]=='O'){
-	        coluna+=subtraindo;
+	        coluna+=sub;
 	      }
 	      else if(inicial[0]=='N' && inicial[1]=='O'){
-	        linha+=subtraindo;
+	        linha+=sub;
 	      }
 				else if(inicial[0]=='N'){
-	        linha-=subtraindo;coluna+=subtraindo;
+	        linha-=sub;coluna+=sub;
 	      }
 	      else if(inicial[0]=='S'){
-	        linha-=subtraindo;coluna+=subtraindo;
+	        linha-=sub;coluna+=sub;
 	      }
 	      else if(inicial[0]=='L'){
-	        coluna-=subtraindo;linha-=subtraindo;
+	        coluna-=sub;linha-=sub;
 	      }
 	      else if(inicial[0]=='O'){
-	        coluna+=subtraindo;linha+=subtraindo;
+	        coluna+=sub;linha+=sub;
 	      }
-	      break;
-	    case(270):
+	    }
+	    if(rotacao==270){
 	      if(inicial[0]=='N' && inicial[1]=='E'){
-	        linha-=subtraindo;coluna-=subtraindo;
+	        linha-=sub;coluna-=sub;
 	      }
 	      else if(inicial[0]=='S' && inicial[1]=='E'){
-	        linha-=subtraindo;coluna+=subtraindo;
+	        linha-=sub;coluna+=sub;
 	      }
 	      else if(inicial[0]=='S' && inicial[1]=='O'){
-	        linha+=subtraindo;coluna+=subtraindo;
+	        linha+=sub;coluna+=sub;
 	      }
 	      else if(inicial[0]=='N' && inicial[1]=='O'){
-	        linha+=subtraindo;coluna-=subtraindo;
+	        linha+=sub;coluna-=sub;
 	      }
 				else if(inicial[0]=='N'){
-	        coluna-=subtraindo;
+	        coluna-=sub;
 	      }
 	      else if(inicial[0]=='S'){
-	        coluna+=subtraindo;
+	        coluna+=sub;
 	      }
 	      else if(inicial[0]=='L'){
-	        linha-=subtraindo;
+	        linha-=sub;
 	      }
 	      else if(inicial[0]=='O'){
-	        linha+=subtraindo;
+	        linha+=sub;
 	      }
-	      break;
-	    case(315):
+		}
+	    if(rotacao==315){
 	      if(inicial[0]=='N' && inicial[1]=='E'){
-	        linha-=subtraindo;
+	        linha-=sub;
 	      }
 	      else if(inicial[0]=='S' && inicial[1]=='E'){
-	        coluna+=subtraindo;
+	        coluna+=sub;
 	      }
 	      else if(inicial[0]=='S' && inicial[1]=='O'){
-	        linha+=subtraindo;
+	        linha+=sub;
 	      }
 	      else if(inicial[0]=='N' && inicial[1]=='O'){
-	        coluna-=subtraindo;
+	        coluna-=sub;
 	      }
 				else if(inicial[0]=='N'){
-	        linha-=subtraindo;coluna-=subtraindo;
+	        linha-=sub;coluna-=sub;
 	      }
 	      else if(inicial[0]=='S'){
-	        linha+=subtraindo;coluna+=subtraindo;
+	        linha+=sub;coluna+=sub;
 	      }
 	      else if(inicial[0]=='L'){
-	        coluna+=subtraindo;linha-=subtraindo;
+	        coluna+=sub;linha-=sub;
 	      }
 	      else if(inicial[0]=='O'){
-	        coluna-=subtraindo;linha+=subtraindo;
+	        coluna-=sub;linha+=sub;
 	      }
-	      break;
-	  }
+		}
 
   if(linha < 0 || linha >= matriz_linhas || coluna < 0 || coluna >= matriz_colunas){
     return 0;
@@ -819,7 +814,7 @@ int analisador_de_movimentacao_pulo(char **vet, int rotacao, char inicial[], int
 	}
 }
 
-void printar(int N,int S,int L,int O,int NE,int SE,int SO,int NO,int bolinha, int pulos_sob_cones, int t1){
+void imprimir(int N,int S,int L,int O,int NE,int SE,int SO,int NO,int bolinha, int pulos_sob_cones, int t1){
 		if(casos==0){
 			arquivo=fopen("saida.txt", "w");
 		}
