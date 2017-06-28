@@ -13,6 +13,8 @@ typedef struct{
 
 Rodada *rod;
 
+void limpar (Rodada *rod);
+void alocar (Rodada *rod);
 void posmove(Rodada *rod, int rotacao,char inicial[], int sub,int *linha,int *coluna,int *cones,int *N,int *S,int *L,int *O,int *NE,int *SE,int *SO,int *NO);
 int analisar(Rodada *rod);
 int rotacao_equivalente(int rotacao);

@@ -824,3 +824,23 @@ void imprimir(int N,int S,int L,int O,int NE,int SE,int SO,int NO,int bolinha, i
 		}
 		fprintf(arquivo, "Caso %d:\nBolinhas coletadas = %d.\nSaltos sobre cones = %d.\nAndou para frente:\nN: %d, NE: %d, L: %d, SE: %d, S: %d, SO: %d, O: %d, NO: %d\n\n", casos+=1, bolinha, pulos_sob_cones, N , NE, L , SE, S , SO , O , NO);
 }
+
+void limpar (Rodada *rod){
+	free(rod->comandos);
+   	for(int i=0;i<rod->N;i++){
+   		free(rod->arena[i]);
+   	}
+   	free(rod->arena);
+   	free(rod);
+}
+
+void alocar (Rodada *rod){
+
+	rod->arena = (char **) malloc ( sizeof(char *) * rod->N);
+
+	for(int i=0; i<rod->N; i++){
+		rod->arena[i]=(char *) malloc(sizeof(char)* rod->M);
+	}
+	rod->comandos=(char*)malloc(sizeof(char)* rod->S);
+
+}

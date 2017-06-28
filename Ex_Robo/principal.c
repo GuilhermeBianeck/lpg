@@ -16,12 +16,7 @@ int main (void){
 
 	while (rod->N !=0 && rod->M !=0 && rod->S !=0 ){
 
-		rod->arena = (char **) malloc ( sizeof(char *) * rod->N);
-
-		for(i=0; i<rod->N; i++){
-			rod->arena[i]=(char *) malloc(sizeof(char)* rod->M);
-		}
-		rod->comandos=(char*)malloc(sizeof(char)* rod->S);
+		alocar(rod);
 
 		scanf("%d %d %s ", &py, &px, o);
 
@@ -47,12 +42,7 @@ int main (void){
 
   	imprimir(0,0,0,0,0,0,0,0,0,0,1);
 
-  	free(rod->comandos);
-   	for(i=0;i<rod->N;i++){
-   		free(rod->arena[i]);
-   	}
-   	free(rod->arena);
-   	free(rod);
+  	limpar(rod);
 
    	printf("Executado com sucesso.\n");
 
