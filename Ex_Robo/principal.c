@@ -36,10 +36,10 @@ int main (void){
 			}
 		}
 		scanf("%s",rod->comandos);
-		if(analisar(rod->comandos)==0){
+		if(analisar(rod)==0){
 			imprimir(0,0,0,0,0,0,0,0,0,0,0);
-		}else if(analisar(rod->comandos)==1){
-			contador(rod->arena, py, px, o, rod->comandos, rod->N, rod->M);
+		}else if(analisar(rod)==1){
+			contador(rod, py, px, o);
 		}
 
   		scanf("%d %d %d",&rod->N,&rod->M,&rod->S);
@@ -53,6 +53,8 @@ int main (void){
    	}
    	free(rod->arena);
    	free(rod);
+
+   	printf("Executado com sucesso.\n");
 
   	return 0;
 }

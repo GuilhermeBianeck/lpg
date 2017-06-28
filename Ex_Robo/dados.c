@@ -7,17 +7,17 @@
 FILE *arquivo = NULL;
 int casos=0;
 
-int analisar(char *palavra){
+int analisar(Rodada *rod){
     int i;
-    for(i=0;i<strlen(palavra);i++){
-        if(palavra[i]=='F' || palavra[i]=='S'){
+    for(i=0;i<strlen(rod->comandos);i++){
+        if(rod->comandos[i]=='F' || rod->comandos[i]=='S'){
             return 1;
         }
     }
     return 0;
 }
 
-void posmove(char **vet, int rotacao,char inicial[], int sub,int *linha,int *coluna,int *cones,int *N,int *S,int *L,int *O,int *NE,int *SE,int *SO,int *NO){
+void posmove(Rodada *rod, int rotacao,char inicial[], int sub,int *linha,int *coluna,int *cones,int *N,int *S,int *L,int *O,int *NE,int *SE,int *SO,int *NO){
 	if (rotacao==0){
 	      if(inicial[0]=='N' && inicial[1]=='E'){
 	        *linha-=sub;*coluna+=sub;
@@ -290,60 +290,60 @@ void posmove(char **vet, int rotacao,char inicial[], int sub,int *linha,int *col
 	        *SO+=1;
 	      }
 	  }
-	if(vet[*linha][*coluna]=='#'){
+	if(rod->arena[*linha][*coluna]=='#'){
 	  *cones+=1;
 	}
 }
 
-void contador(char **vet, int linha, int coluna, char inicial[],char comandos[], int matriz_linhas, int matriz_colunas){
+void contador(Rodada *rod, int linha, int coluna, char inicial[]){
   int i=0, bolinha=0, sub=0, pulos_sob_cones=0, aux_imprimir=0;
 	int N=0,S=0,L=0,O=0,NE=0,SE=0,SO=0,NO=0;
 
-  while(comandos[i]!='\0'){
+  while(rod->comandos[i]!='\0'){
 		int N1=0,S1=0,L1=0,O1=0,NE1=0,SE1=0, SO1=0,NO1=0;
     int rotacao = 0;
 		int cones=0;
-		//atribui a rotação total pela sequencia de comandos dados
-    while(comandos[i]!='F'){
-			if(comandos[i]=='S'){
+		//atribui a rotação total pela sequencia de rod->comandos dados
+    while(rod->comandos[i]!='F'){
+			if(rod->comandos[i]=='S'){
 				break;
 			}
-			if(comandos[i]=='\0'){
+			if(rod->comandos[i]=='\0'){
 				imprimir(N,S,L,O,NE,SE,SO,NO,bolinha,pulos_sob_cones,0);
 				aux_imprimir+=1;
 				break;
 			}
-      if(comandos[i]=='D'){
+      if(rod->comandos[i]=='D'){
         rotacao+=45;
       }
-      else if(comandos[i]=='E'){
+      else if(rod->comandos[i]=='E'){
         rotacao-=45;
       }
       i++;
     }
-		if(comandos[i]=='\0'){
+		if(rod->comandos[i]=='\0'){
 			break;
 		}
-    if(comandos[i]=='F'){
+    if(rod->comandos[i]=='F'){
       sub = 1;
     }
-    if(comandos[i]=='S'){
+    if(rod->comandos[i]=='S'){
       sub = 2;
     }
 
     rotacao = rotacao_equivalente(rotacao);
 		int linha_pulo=linha, coluna_pulo=coluna;
-		posmove(vet, rotacao, inicial, 1 ,&linha,&coluna, &cones,&N1,&S1,&L1,&O1,&NE1,&SE1,&SO1,&NO1);
+		posmove(rod, rotacao, inicial, 1 ,&linha,&coluna, &cones,&N1,&S1,&L1,&O1,&NE1,&SE1,&SO1,&NO1);
 
-		if(comandos[i]=='F' && cones==0 && linha>=0 && linha<matriz_linhas && coluna>=0 && coluna<matriz_colunas){
+		if(rod->comandos[i]=='F' && cones==0 && linha>=0 && linha<rod->N && coluna>=0 && coluna<rod->M){
 			N+=N1;S+=S1;L+=L1;O+=O1;NE+=NE1;SE+=SE1;SO+=SO1;NO+=NO1;
-				if(vet[linha][coluna]=='*'){
+				if(rod->arena[linha][coluna]=='*'){
 							bolinha++;
 				}
 		}
 
-		if(comandos[i]=='S'){
-    if(analisador_de_movimentacao_pulo(vet, rotacao, inicial, 2, matriz_linhas, matriz_colunas, linha_pulo , coluna_pulo)==1){
+		if(rod->comandos[i]=='S'){
+    if(analisador_de_movimentacao_pulo(rod, rotacao, inicial, 2, linha_pulo , coluna_pulo)==1){
 					pulos_sob_cones+=cones;
 		if (rotacao==0){
 			if(inicial[0]=='N' && inicial[1]=='E'){
@@ -553,7 +553,7 @@ void contador(char **vet, int linha, int coluna, char inicial[],char comandos[],
 				coluna_pulo-=sub;linha_pulo+=sub;
 			}
 		}
-		if(vet[linha_pulo][coluna_pulo]=='*'){
+		if(rod->arena[linha_pulo][coluna_pulo]=='*'){
 			bolinha++;
 		}
 	}
@@ -565,6 +565,7 @@ void contador(char **vet, int linha, int coluna, char inicial[],char comandos[],
   imprimir(N,S,L,O,NE,SE,SO,NO,bolinha,pulos_sob_cones,0);
 	}
 }
+
 
 int rotacao_equivalente(int rotacao){
 	if(rotacao==360 || rotacao==0 || rotacao==720 || rotacao==1080){
@@ -593,7 +594,7 @@ int rotacao_equivalente(int rotacao){
 	}
 }
 
-int analisador_de_movimentacao_pulo(char **vet, int rotacao, char inicial[], int sub, int matriz_linhas, int matriz_colunas, int linha, int coluna){
+int analisador_de_movimentacao_pulo(Rodada *rod, int rotacao, char inicial[], int sub, int linha, int coluna){
 	if (rotacao==0){
 	      if(inicial[0]=='N' && inicial[1]=='E'){
 	        linha-=sub;coluna+=sub;
@@ -803,10 +804,10 @@ int analisador_de_movimentacao_pulo(char **vet, int rotacao, char inicial[], int
 	      }
 		}
 
-  if(linha < 0 || linha >= matriz_linhas || coluna < 0 || coluna >= matriz_colunas){
+  if(linha < 0 || linha >= rod->N || coluna < 0 || coluna >= rod->M){
     return 0;
   }
-	else if(vet[linha][coluna]=='#'){
+	else if(rod->arena[linha][coluna]=='#'){
 		return 0;
 	}
   else{
