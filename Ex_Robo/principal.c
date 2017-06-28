@@ -9,18 +9,19 @@ int main (void){
 	char o[2];
 	char **arena = NULL;
 
+
 	Rodada *rod = (Rodada *) malloc (sizeof(Rodada));
-	rod->arena = (char **) malloc ( sizeof(char *) * rod->N);
-
-	for(i=0; i<rod->N; i++){
-		rod->arena[i]=(char *) malloc(sizeof(char)* rod->M);
-	}
-
-	rod->comandos=(char*)malloc(sizeof(char)* rod->S);
 
 	scanf("%d %d %d",&rod->N,&rod->M,&rod->S);	
 
 	while (rod->N !=0 && rod->M !=0 && rod->S !=0 ){
+
+		rod->arena = (char **) malloc ( sizeof(char *) * rod->N);
+
+		for(i=0; i<rod->N; i++){
+			rod->arena[i]=(char *) malloc(sizeof(char)* rod->M);
+		}
+		rod->comandos=(char*)malloc(sizeof(char)* rod->S);
 		
 		scanf("%d %d %s ", &py, &px, o);
 
