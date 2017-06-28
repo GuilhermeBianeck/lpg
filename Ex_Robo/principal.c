@@ -10,17 +10,18 @@ int main (void){
 	char **arena = NULL;
 
 	Rodada *rod = (Rodada *) malloc (sizeof(Rodada));
+	rod->arena = (char **) malloc ( sizeof(char *) * rod->N);
+
+	for(i=0; i<rod->N; i++){
+		rod->arena[i]=(char *) malloc(sizeof(char)* rod->M);
+	}
+
+	rod->comandos=(char*)malloc(sizeof(char)* rod->S);
+
 	scanf("%d %d %d",&rod->N,&rod->M,&rod->S);	
 
 	while (rod->N !=0 && rod->M !=0 && rod->S !=0 ){
 		
-		rod->arena = (char **) malloc ( sizeof(char *) * rod->N);
-
-		for(i=0; i<rod->N; i++){
-			rod->arena[i]=(char *) malloc(sizeof(char)* rod->M);
-		}
-
-		rod->comandos=(char*)malloc(sizeof(char)* rod->S);
 		scanf("%d %d %s ", &py, &px, o);
 
 		for(i=0; i<rod->N; i++){
@@ -42,15 +43,17 @@ int main (void){
 			contador(rod->arena, py, px, o, rod->comandos, rod->N, rod->M);
 		}
 
-   		free(rod->comandos);
-   		for(i=0;i<rod->N;i++){
-   			free(rod->arena[i]);
-   		}
-   		free(rod->arena);
-   		free(rod);
   		scanf("%d %d %d",&rod->N,&rod->M,&rod->S);
   	}
 
   	imprimir(0,0,0,0,0,0,0,0,0,0,1);
+
+  	free(rod->comandos);
+   	for(i=0;i<rod->N;i++){
+   		free(rod->arena[i]);
+   	}
+   	free(rod->arena);
+   	free(rod);
+
   	return 0;
 }
